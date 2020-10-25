@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -158,7 +158,17 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+
+//        会有很多人会遇到翻译 Laravel 自带模板的问题，所以我们无需自己一个个去翻译，这种通用的问题找找扩展包来处理即可。
+//        我们将使用 Laravel Lang 项目来实现，此项目支持了 52 个国家的语言，使用以下命令安装：
+//        composer require "overtrue/laravel-lang:~3.0"
+//        完成上面的操作后，将项目文件 config / app . php 中的下一行
+//        Illuminate\Translation\TranslationServiceProvider::class,Copy
+//        替换为：
+//        Overtrue\LaravelLang\TranslationServiceProvider::class,
+
+//      Illuminate\Translation\TranslationServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
